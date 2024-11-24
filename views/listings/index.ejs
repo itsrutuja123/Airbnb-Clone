@@ -1,0 +1,25 @@
+<% layout("/layouts/boilerplate") -%>
+<body>
+    <% for (let listing of allListings) { %>
+    <div class="card" style="width: 18rem;">
+        <% if (listing.image && listing.image.filename) { %>
+            <img src="<%= listing.image.filename %>" class="card-img-top" alt="listing-image">
+        <% } else { %>
+            <img src="https://unsplash.com/photos/a-boat-dock-with-houses-on-the-water-jxfRoT-YVaU" class="card-img-top" alt="default-image">
+        <% } %>
+        <div class="card-body">
+          <p class="card-text">
+            <%= listing.title %> <br>
+            <%= listing.price.toLocaleString("en-IN") %> /night
+
+        </p>
+        </div>
+    </div>
+    <% } %>
+    
+    <ul>
+        <% for (let listing of allListings) { %>
+            <li> <a href="/listings/<%= listing._id %>"><%= listing.title %></a></li>
+        <% } %>
+    </ul>
+</body>
